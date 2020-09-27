@@ -2,54 +2,47 @@
 
 const DES_ = 'DES';
 const ASC_ = 'ASC';
-
-
-class Order{
     
-    static arrays(arraytoOrder, typeOrder = 'ASC')
-    {
-        let arrayToReturn = [];
-        try
+orderArrays = (arraytoOrder, typeOrder = 'ASC') =>
+{
+    let arrayToReturn = [];
+    try
+    {            
+        switch(typeOrder)      
         {            
-          switch(typeOrder)      
-          {            
-            case 'ASC':
-                arrayToReturn = quickSort(arraytoOrder);
-                break;
+        case 'ASC':
+            arrayToReturn = quickSort(arraytoOrder, ASC_);
+            break;
 
-            case 'DES':
-                arrayToReturn = quickSort(arraytoOrder);
-                break;
-            default:
-                arrayToReturn = arraytoOrder;
-                break;
-          }
-          
-        return arrayToReturn;
-        }catch(warnMessage)
-        {
-            console.warn(warnMessage);
+        case 'DES':
+            arrayToReturn = quickSort(arraytoOrder, DES_);
+            break;
+        default:
+            arrayToReturn = arraytoOrder;
+            console.warn("Cannot order the array because the Type order is not 'ASC' or 'DES'")
+            break;
         }
-    }    
-}
+        
+    return arrayToReturn;
+    }catch(warnMessage)
+    {
+        console.warn(warnMessage);
+    }
+}    
 
-
-
-quickSort = (arra) =>{
+quickSort = (arra,type) =>{
 
     if(arra.length > 1)
     {
-        let returnOrder = orderSort(arra);        
+        let returnOrder = order(arra,type);        
         
-        return quickSort(returnOrder.ArrayLeft).concat(returnOrder.Pivote, quickSort(returnOrder.ArrayRigth))
+        return quickSort(returnOrder.ArrayLeft,type).concat(returnOrder.Pivote, quickSort(returnOrder.ArrayRigth,type))
     }else{
         return arra;
     }
 }
 
-
-
-orderSort = (arra)=>
+order = (arra,type)=>
 {
     const pivote  = arra[0];
     let arrayleft  = [];
@@ -58,9 +51,21 @@ orderSort = (arra)=>
     {
         if(arra[iterator] < pivote)
         {
-            arrayleft.push(arra[iterator])
+            if(type === ASC_)
+            {
+                arrayleft.push(arra[iterator])
+            }else{
+                arrayrigth.push(arra[iterator])
+            }
+            
         }else{
-            arrayrigth.push(arra[iterator])
+            if(type === ASC_)
+            {
+                arrayrigth.push(arra[iterator])
+                
+            }else{
+                arrayleft.push(arra[iterator])
+            }            
         }
     }
         
@@ -73,9 +78,4 @@ orderSort = (arra)=>
     return objectReturn;
 }
 
-
-
-
-console.log(Order.arrays([1,4,2,8,5], ASC_))
-
-module.exports = {Order, DES_, ASC_};
+module.exports = {orderArrays, DES_, ASC_};
