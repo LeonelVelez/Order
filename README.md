@@ -1,2 +1,2 @@
-# decimalparse
- It is a npm package to convert decimals from javascript
+# Order
+ It is an npm package to order arrays of numbers, objects or characters from javascript.
