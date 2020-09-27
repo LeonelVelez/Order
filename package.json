@@ -1,0 +1,23 @@
+{
+  "name": "order",
+  "version": "1.0.0",
+  "description": "it is a package to order arrays of numbers, objets and characters ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeonelVelez/Order.git"
+  },
+  "keywords": [
+    "Order",
+    "Ordenar"
+  ],
+  "author": "Leonel Velez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeonelVelez/Order/issues"
+  },
+  "homepage": "https://github.com/LeonelVelez/Order#readme"
+}
